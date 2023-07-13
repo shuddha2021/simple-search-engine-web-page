@@ -1,6 +1,21 @@
-# Simple Search Engine
+# Simple Search Engine Web Page
 
-This is a simple search engine web page that allows the user to search for some fruits and birds.
+A simple web page that allows the user to search for some fruits using HTML, CSS and JavaScript.
+
+## Live Demo
+
+You can see the live demo of the web page here: https://simple-search-engine-web-page.vercel.app/
+
+<img width="810" alt="Screenshot 2023-07-13 at 12 42 47 PM" src="https://github.com/shuddha2021/simple-search-engine-web-page/assets/81951239/b39b48bf-89d1-42d3-8efc-c6f50a1cb0e0">
+
+<img width="818" alt="Screenshot 2023-07-13 at 12 43 15 PM" src="https://github.com/shuddha2021/simple-search-engine-web-page/assets/81951239/971b877d-307e-42ca-8048-5fc94b614014">
+
+
+## Tech Stacks
+
+- HTML
+- CSS
+- JavaScript
 
 ## How it works
 
