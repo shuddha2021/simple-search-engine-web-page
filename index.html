@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A Very Simple Search Engine</title>
+    <style>
+        /* CSS styles for the search box and search results */
+        #search-container {
+            width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #search-box {
+            width: 500px;
+            height: 30px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+
+        #search-button {
+            width: 80px;
+            height: 40px;
+            border: none;
+            border-radius: 20px;
+            background-color: #f8f9fa;
+            color: #3c4043;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #search-results {
+            list-style-type: none;
+            margin-top: 20px;
+        }
+
+        #search-results li {
+            margin-bottom: 10px;
+        }
+
+        #search-results a {
+            color: #1a0dab;
+            text-decoration: none;
+        }
+
+        #search-results a:hover {
+            text-decoration: underline;
+        }
+
+        #search-results p {
+            color: #4d5156;
+        }
+    </style>
+</head>
+<body>
+<div id="search-container">
+    <h1>Simple Search Engine</h1>
+
+    <input type="text" id="search-box" placeholder="Enter your search query" />
+    <button id="search-button">Search</button>
+    <ul id="search-results"></ul>
+</div>
+
+<script>
+    // Sample data for demonstration
+    const data = [
+        {title: 'Apple - Wikipedia', url: 'https://en.wikipedia.org/wiki/Apple', description: 'An apple is an edible fruit produced by an apple tree (Malus domestica). Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus.'},
+        {title: 'Banana - Wikipedia', url: 'https://en.wikipedia.org/wiki/Banana', description: 'A banana is an elongated, edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.'},
+        {title: 'Orange (fruit) - Wikipedia', url: 'https://en.wikipedia.org/wiki/Orange_(fruit)', description: 'The orange is the fruit of various citrus species in the family Rutaceae; it primarily refers to Citrus × sinensis, which is also called sweet orange, to distinguish it from the related Citrus × aurantium, referred to as bitter orange.'},
+        {title: 'Grape - Wikipedia', url: 'https://en.wikipedia.org/wiki/Grape', description: 'A grape is a fruit, botanically a berry, of the deciduous woody vines of the flowering plant genus Vitis.'},
+        {title: 'Pineapple - Wikipedia', url: 'https://en.wikipedia.org/wiki/Pineapple', description: 'The pineapple (Ananas comosus) is a tropical plant with an edible fruit and the most economically significant plant in the family Bromeliaceae.'},
+        {title: 'Watermelon - Wikipedia', url: 'https://en.wikipedia.org/wiki/Watermelon', description: 'Watermelon (Citrullus lanatus) is a flowering plant species of the Cucurbitaceae family. A scrambling and trailing vine-like plant, it was originally domesticated in Africa.'},
+        {title: 'Kiwi - Wikipedia', url: 'https://en.wikipedia.org/wiki/Kiwi', description: 'Kiwi or kiwis are flightless birds native to New Zealand, in the genus Apteryx and family Apterygidae. Approximately the size of a domestic chicken, kiwi are by far the smallest living ratites (which also consist of ostriches, emus, rheas, and cassowaries).'},
+        {title: 'Pear - Wikipedia', url: 'https://en.wikipedia.org/wiki/Pear', description: 'The pear (/pɛər/) tree and shrub are a species of genus Pyrus /ˈpaɪrəs/, in the family Rosaceae, bearing the pomaceous fruit of the same name. Several species of pears are valued for their edible fruit and juices, while others are cultivated as trees.'}
+    ];
+
+    // Function to perform search and display results
+    function performSearch() {
+        // Get the search query from the input box
+        const query = document.getElementById('search-box').value.toLowerCase();
+
+        // Clear previous results
+        const searchResults = document.getElementById('search-results');
+        searchResults.innerHTML = '';
+
+        // Perform the search
+        const results = data.filter(item => item.title.toLowerCase().includes(query) || item.description.toLowerCase().includes(query));
+
+        // Display the results
+        if (results.length === 0) {
+            const noResultsItem = document.createElement('li');
+            noResultsItem.textContent = 'No results found.';
+            searchResults.appendChild(noResultsItem);
+        } else {
+            results.forEach(result => {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = result.url;
+                link.textContent = result.title;
+                const paragraph = document.createElement('p');
+                paragraph.textContent = result.description;
+                listItem.appendChild(link);
+                listItem.appendChild(paragraph);
+                searchResults.appendChild(listItem);
+            });
+        }
+    }
+
+    // Attach the performSearch function to the input box's "keyup" event and the button's "click" event
+    document.getElementById('search-box').addEventListener('keyup', performSearch);
+    document.getElementById('search-button').addEventListener('click', performSearch);
+</script>
+</body>
+</html>
